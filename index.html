@@ -12,7 +12,7 @@
         .brand { font-family: 'Playfair Display', serif; font-size: 24px; text-align: center; padding: 15px; border-bottom: 1px solid #eee; }
         .c1 { color: #e91e63; } .c2 { color: #9c27b0; } .c3 { color: #2196f3; } .c4 { color: #4caf50; }
         .overlay { position: absolute; top:0; left:0; width:100%; height:100%; z-index: 9999; background: white; padding: 25px; box-sizing: border-box; display: none; flex-direction: column; }
-        .legal-box { flex-grow: 1; overflow-y: auto; border: 1px solid #ddd; padding: 15px; border-radius: 10px; font-size: 11px; line-height: 1.4; color: #444; margin-bottom: 15px; }
+        .legal-box { flex-grow: 1; overflow-y: auto; border: 1px solid #ddd; padding: 15px; border-radius: 10px; font-size: 11px; line-height: 1.5; color: #444; margin-bottom: 15px; background: #fafafa; }
         #admin-panel { background: black; color: #00ff00; font-family: monospace; z-index: 10000; }
         .nav { height: 70px; border-top: 1px solid #eee; display: flex; background: white; z-index: 800; }
         .nav-btn { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 9px; color: #888; cursor: pointer; }
@@ -44,13 +44,20 @@
     </div>
 
     <div id="legal-overlay" class="overlay" style="display:flex">
-        <h2 style="font-family: 'Playfair Display';">Legal Terms 🛡️</h2>
+        <h2 style="font-family: 'Playfair Display';">Legal Agreement 🛡️</h2>
         <div class="legal-box">
-            <strong>1. Risk:</strong> Market values fluctuate.<br>
-            <strong>2. Identity:</strong> ID Scan required for withdrawals > 5k UGX.<br>
-            <strong>3. Fees:</strong> 5% deposit fee applies.
+            <strong>1. Risk Disclosure:</strong> Capital is at risk. Past performance does not guarantee future results.<br><br>
+            <strong>2. Verification:</strong> National ID scanning is mandatory for all withdrawals exceeding 5,000 UGX.<br><br>
+            <strong>3. Platform Fees:</strong> A 5% infrastructure fee is deducted from all deposits to maintain the AI Price Engine.<br><br>
+            <strong>4. Withdrawal Processing:</strong> Standard withdrawals process within 24 hours unless VIP status is active.<br><br>
+            <strong>5. Account Security:</strong> Users are responsible for their own phone security and account access.<br><br>
+            <strong>6. AI Execution:</strong> Auto-Pilot trades are executed based on market volatility algorithms.<br><br>
+            <strong>7. No Guarantee:</strong> Game Changer provides technology services, not guaranteed financial returns.<br><br>
+            <strong>8. Referral Integrity:</strong> Fraudulent referral activity will result in immediate account suspension.<br><br>
+            <strong>9. Network Fees:</strong> Standard Airtel/MTN transaction rates apply outside of platform fees.<br><br>
+            <strong>10. Agreement:</strong> By clicking "I Accept," you confirm you are 18+ and agree to these terms.
         </div>
-        <button class="btn" style="background:var(--primary); color:white" onclick="acceptLegal()">I ACCEPT</button>
+        <button class="btn" style="background:var(--primary); color:white" onclick="acceptLegal()">I ACCEPT THE TERMS</button>
     </div>
 
     <div id="onboard-overlay" class="overlay">
@@ -60,7 +67,7 @@
             <span style="padding:0 10px; font-weight:bold;">+256</span>
             <input type="tel" id="user-phone" placeholder="770000000" maxlength="9" style="border:none; background:transparent; outline:none; flex-grow:1; padding:10px;">
         </div>
-        <button class="btn" style="background:var(--primary); color:white" onclick="completeOnboarding()">START</button>
+        <button class="btn" style="background:var(--primary); color:white" onclick="completeOnboarding()">START INVESTING</button>
     </div>
 
     <div class="brand"><span class="c1">G</span><span class="c2">a</span><span class="c3">m</span><span class="c4">e</span> Changer</div>
@@ -70,17 +77,17 @@
             <div class="card">
                 <div style="display:flex; justify-content:space-between">
                     <span>Balance (UGX)</span>
-                    <span id="vip-status" style="display:none; background:var(--gold); color:black; padding:2px 8px; border-radius:10px; font-size:9px;">VIP</span>
+                    <span id="vip-status" style="display:none; background:var(--gold); color:black; padding:2px 8px; border-radius:10px; font-size:9px;">VIP ACTIVE</span>
                 </div>
                 <div style="font-size:28px; font-weight:bold; margin:10px 0" id="bal">0</div>
                 <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.1); padding:8px; border-radius:10px">
-                    <span>Auto-Pilot</span>
+                    <span>Auto-Pilot Mode</span>
                     <label class="switch"><input type="checkbox" id="auto-pilot" onchange="toggleAuto()"><span class="slider"></span></label>
                 </div>
             </div>
 
             <div id="gift-section" style="text-align: center; margin-bottom:15px;">
-                <button id="gift-btn" class="btn" style="background: linear-gradient(45deg, #ff9800, #ff5722); color: white;" onclick="claimDailyGift()">🎁 Daily Bonus (50-100 UGX)</button>
+                <button id="gift-btn" class="btn" style="background: linear-gradient(45deg, #ff9800, #ff5722); color: white;" onclick="claimDailyGift()">🎁 Claim Daily Bonus (50-100 UGX)</button>
             </div>
 
             <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:15px;">
@@ -88,17 +95,29 @@
                 <button class="btn btn-mtn" onclick="setNetwork('MTN')">MTN</button>
             </div>
             <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
-                <button class="btn" style="background:#ddd" onclick="deposit(1000)">1k</button>
-                <button class="btn" style="background:#ddd" onclick="deposit(10000)">10k</button>
+                <button class="btn" style="background:#ddd" onclick="deposit(1000)">1k Deposit</button>
+                <button class="btn" style="background:#ddd" onclick="deposit(10000)">10k Deposit</button>
             </div>
             <button class="btn" style="background:#fff9c4; color:#856404; border:1px dashed #856404; margin-top:10px" onclick="doRefer()">🎁 Refer & Earn 200 UGX</button>
         </div>
 
         <div id="page2" class="page">
-            <h3>Markets 🎓</h3>
+            <h3>Global Markets 📈</h3>
             <div class="nugget">
-                <strong>Tesla (TSLA)</strong><br><small>High growth AI stock.</small>
+                <strong>Tesla (TSLA)</strong><br><small>AI & EV Leader. High Volatility.</small>
                 <button class="btn" style="background:var(--primary); color:white; margin-top:10px" onclick="tradeManual('Tesla')">Trade 1k</button>
+            </div>
+            <div class="nugget">
+                <strong>Apple Inc (AAPL)</strong><br><small>Safe Haven. Consistent Dividends.</small>
+                <button class="btn" style="background:var(--primary); color:white; margin-top:10px" onclick="tradeManual('Apple')">Trade 1k</button>
+            </div>
+            <div class="nugget">
+                <strong>NVIDIA (NVDA)</strong><br><small>AI Chip Giant. Aggressive Growth.</small>
+                <button class="btn" style="background:var(--primary); color:white; margin-top:10px" onclick="tradeManual('NVIDIA')">Trade 1k</button>
+            </div>
+            <div class="nugget">
+                <strong>Gold (XAU)</strong><br><small>Inflation Hedge. Stable Asset.</small>
+                <button class="btn" style="background:var(--gold); color:white; margin-top:10px" onclick="tradeManual('Gold')">Trade 1k</button>
             </div>
         </div>
 
@@ -106,46 +125,52 @@
             <h2 style="color:var(--gold)">👑 VIP CLUB</h2>
             <div style="background:white; padding:20px; border:2px solid var(--gold); border-radius:20px">
                 <p><strong>5,000 UGX Monthly</strong></p>
-                <button class="btn" style="background:var(--gold); color:white" onclick="buyVIP()">JOIN VIP</button>
+                <ul style="text-align:left; font-size:11px;">
+                    <li>✨ 0% Withdrawal Fees</li>
+                    <li>⚡ Instant Processing</li>
+                    <li>🤖 Premium AI Signals</li>
+                </ul>
+                <button class="btn" style="background:var(--gold); color:white" onclick="buyVIP()">JOIN ELITE VIP</button>
             </div>
         </div>
 
         <div id="page4" class="page">
-            <h3 onclick="adminClick()">Safety 🛡️</h3>
+            <h3 onclick="adminClick()">Account Safety 🛡️</h3>
             <div style="background:#e3f2fd; padding:15px; border-radius:15px; margin-bottom:15px;">
-                Status: <strong id="v-status">UNVERIFIED</strong>
+                Verification: <strong id="v-status">UNVERIFIED</strong>
             </div>
             <div id="camera-container" style="display:none; margin-bottom:15px;">
                 <video id="video" width="100%" autoplay playsinline style="border-radius:15px; background:black;"></video>
-                <button class="btn" style="background:var(--success); color:white; margin-top:5px" onclick="captureID()">SCAN ID</button>
+                <button class="btn" style="background:var(--success); color:white; margin-top:5px" onclick="captureID()">SCAN NATIONAL ID</button>
             </div>
-            <button id="scan-btn" class="btn" style="background:var(--primary); color:white" onclick="startScanner()">📸 Scan National ID</button>
+            <button id="scan-btn" class="btn" style="background:var(--primary); color:white" onclick="startScanner()">📸 Start ID Scan</button>
             
             <div id="status-tracker" style="display:none; background:#f9f9f9; padding:15px; border-radius:15px; margin-top:10px;">
-                <div style="display:flex; justify-content:space-between; font-size:11px;"><strong>Processing...</strong><span id="p-per">0%</span></div>
+                <div style="display:flex; justify-content:space-between; font-size:11px;"><strong>Encrypted Handshake...</strong><span id="p-per">0%</span></div>
                 <div style="width:100%; height:8px; background:#eee; border-radius:10px; overflow:hidden; margin:10px 0;"><div id="p-bar" style="width:0%; height:100%; background:var(--primary);"></div></div>
-                <small id="p-step" style="font-size:9px; color:#666;">Initializing...</small>
+                <small id="p-step" style="font-size:9px; color:#666;">Verifying Network Integrity...</small>
             </div>
-            <button class="btn" style="background:#1a1a1a; color:white" onclick="initiateWithdrawal()">Withdraw</button>
-            <div id="trade-log" style="font-size:10px; background:#eee; padding:10px; border-radius:10px; margin-top:15px; max-height:100px; overflow-y:auto;">History Empty</div>
+            <button class="btn" style="background:#1a1a1a; color:white" onclick="initiateWithdrawal()">Secure Withdrawal</button>
+            <div id="trade-log" style="font-size:10px; background:#eee; padding:10px; border-radius:10px; margin-top:15px; max-height:120px; overflow-y:auto;">Activity Log Empty</div>
         </div>
 
         <div id="page5" class="page">
-            <h3>Elite Ranks 🏆</h3>
-            <div id="cert-preview" style="display:none; border:5px double var(--gold); padding:20px; background:#fff; text-align:center;">
-                <h3>ELITE INVESTOR</h3>
+            <h3>Elite Rankings 🏆</h3>
+            <div id="cert-preview" style="display:none; border:5px double var(--gold); padding:20px; background:#fff; text-align:center; margin-bottom:20px;">
+                <h3 style="color:var(--primary)">OFFICIAL CERTIFICATE</h3>
+                <p>Elite Investor Status:</p>
                 <h4 id="cert-name">NAME</h4>
-                <p>ID: GC-256-<span id="cert-id"></span></p>
+                <p>Verified ID: GC-256-<span id="cert-id"></span></p>
             </div>
-            <button class="btn" style="background:var(--gold); color:black; margin-top:20px" onclick="generateCertificate()">🏅 CLAIM CERTIFICATE</button>
+            <button class="btn" style="background:var(--gold); color:black" onclick="generateCertificate()">🏅 CLAIM MY CERTIFICATE</button>
         </div>
     </div>
 
-    <div id="chat-trigger" onclick="toggleChat(true)" style="position:absolute; bottom:85px; right:20px; width:50px; height:50px; background:var(--wa); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:24px; z-index:900;">💬</div>
+    <div id="chat-trigger" onclick="toggleChat(true)" style="position:absolute; bottom:85px; right:20px; width:50px; height:50px; background:var(--wa); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:24px; z-index:900; box-shadow:0 4px 10px rgba(0,0,0,0.3)">💬</div>
     <div id="support-chat" style="display:none; position:absolute; bottom:85px; right:10px; left:10px; top:100px; background:white; border-radius:20px; box-shadow:0 0 20px rgba(0,0,0,0.2); z-index:1001; flex-direction:column;">
-        <div style="background:var(--primary); color:white; padding:15px; border-radius:20px 20px 0 0; display:flex; justify-content:space-between;"><strong>Support 🤖</strong><span onclick="toggleChat(false)">✕</span></div>
+        <div style="background:var(--primary); color:white; padding:15px; border-radius:20px 20px 0 0; display:flex; justify-content:space-between;"><strong>Game Changer AI Bot 🤖</strong><span onclick="toggleChat(false)" style="cursor:pointer">✕</span></div>
         <div id="chat-msgs" style="flex-grow:1; padding:15px; overflow-y:auto; font-size:12px; display:flex; flex-direction:column; gap:8px;"></div>
-        <div style="padding:10px; border-top:1px solid #eee; display:flex;"><input type="text" id="chat-in" style="flex-grow:1; padding:8px; border-radius:20px; border:1px solid #ddd;"><button onclick="sendChat()" style="margin-left:5px;">➤</button></div>
+        <div style="padding:10px; border-top:1px solid #eee; display:flex;"><input type="text" id="chat-in" placeholder="Ask about fees, VIP, or safety..." style="flex-grow:1; padding:8px; border-radius:20px; border:1px solid #ddd; outline:none;"><button onclick="sendChat()" style="margin-left:5px; border:none; background:none; font-size:20px;">➤</button></div>
     </div>
 
     <div class="nav">
@@ -159,14 +184,14 @@
 
 <script>
     let balance = 0; let revenue = 0; let refCount = 0; let name = "Investor";
-    let network = "None"; let isVIP = false; let lastGift = 0; let marketTrend = 1.0;
+    let network = "None"; let isVIP = false; let lastGift = 0; let marketTrend = 1.0; let autoInt;
 
     function startApp() {}
     function acceptLegal() { document.getElementById('legal-overlay').style.display='none'; document.getElementById('onboard-overlay').style.display='flex'; }
     function completeOnboarding() {
         const n = document.getElementById('user-name').value;
         const p = document.getElementById('user-phone').value;
-        if(!n || p.length < 9) return alert("Enter Name & 9-digit Phone");
+        if(!n || p.length < 9) return alert("Please enter Full Name & valid Phone Number.");
         name = n; document.getElementById('onboard-overlay').style.display='none';
     }
     function tab(no, el) {
@@ -175,31 +200,36 @@
         document.querySelectorAll('.nav-btn').forEach(n => n.classList.remove('nav-active'));
         el.classList.add('nav-active');
     }
-    function setNetwork(n) { network = n; alert("Selected: " + n); }
+    function setNetwork(n) { network = n; alert(n + " Wallet connected."); }
     function deposit(amt) {
-        if(network === "None") return alert("Select Network");
-        balance += (amt * 0.95); revenue += (amt * 0.05); update(); addToLog("Deposit", amt*0.95);
+        if(network === "None") return alert("Connect Airtel or MTN first.");
+        let depositAmt = amt * 0.95; balance += depositAmt; revenue += (amt * 0.05); update(); addToLog("Deposit", depositAmt);
     }
     function claimDailyGift() {
-        const now = Date.now(); if(now - lastGift < 86400000) return alert("Wait 24h");
-        const g = Math.floor(Math.random()*51)+50; balance += g; lastGift = now; update(); addToLog("Gift", g);
+        const now = Date.now(); if(now - lastGift < 86400000) return alert("Daily Gift available every 24 hours.");
+        const g = Math.floor(Math.random()*51)+50; balance += g; lastGift = now; update(); addToLog("Bonus", g);
     }
     function toggleAuto() {
         if(document.getElementById('auto-pilot').checked) {
             autoInt = setInterval(() => {
                 if(balance >= 1000) {
-                    marketTrend = Math.random() > 0.5 ? 1.1 : 0.9;
-                    let c = (100 * marketTrend); balance += c; revenue += 5; update(); addToLog("Auto", c);
+                    marketTrend = Math.random() > 0.4 ? 1.05 : 0.95;
+                    let c = (100 * marketTrend); balance += c; revenue += 5; update(); addToLog("Auto-Trade", c);
                 }
             }, 5000);
         } else clearInterval(autoInt);
     }
+    function tradeManual(co) {
+        if(balance < 1000) return alert("Minimum balance of 1,000 UGX required.");
+        let win = Math.random() > 0.5 ? 200 : -100; balance += win; update(); addToLog("Manual: "+co, win);
+    }
     function initiateWithdrawal() {
-        if(balance > 5000 && document.getElementById('v-status').innerText !== "VERIFIED ✅") return alert("KYC Required");
+        if(balance <= 0) return alert("Insufficient balance.");
+        if(balance > 5000 && document.getElementById('v-status').innerText !== "VERIFIED ✅") return alert("KYC Required for withdrawals over 5,000 UGX.");
         const t = document.getElementById('status-tracker'); t.style.display="block";
         let p = 0; const i = setInterval(() => {
             p += 10; document.getElementById('p-bar').style.width = p+"%"; document.getElementById('p-per').innerText = p+"%";
-            if(p >= 100) { clearInterval(i); alert("Funds Sent!"); balance = 0; update(); t.style.display="none"; }
+            if(p >= 100) { clearInterval(i); alert("Withdrawal Successful! Funds sent to your Mobile Money."); balance = 0; update(); t.style.display="none"; }
         }, 200);
     }
     async function startScanner() {
@@ -210,6 +240,7 @@
     }
     function captureID() {
         document.getElementById('v-status').innerText = "VERIFIED ✅";
+        document.getElementById('v-status').style.color = "green";
         document.getElementById('camera-container').style.display='none';
         document.getElementById('video').srcObject.getTracks().forEach(t => t.stop());
     }
@@ -226,26 +257,21 @@
         l.prepend(d);
     }
     function toggleChat(s) { document.getElementById('support-chat').style.display = s?'flex':'none'; }
+
+    // SMARTER CHATBOT KNOWLEDGE BASE
     function sendChat() {
-        const i = document.getElementById('chat-in'); const m = i.value; if(!m) return;
-        appendMsg('user', m); i.value = '';
-        setTimeout(() => appendMsg('bot', "I can help with withdrawals!"), 600);
-    }
-    function appendMsg(s, t) {
-        const b = document.getElementById('chat-msgs'); const d = document.createElement('div');
-        d.innerText = t; d.style.alignSelf = s==='user'?'flex-end':'flex-start';
-        d.style.background = s==='user'?'var(--primary)':'#eee'; d.style.color = s==='user'?'white':'black';
-        d.style.padding="8px"; d.style.borderRadius="10px"; b.appendChild(d);
-    }
-    function generateCertificate() {
-        if(balance < 100000) return alert("Need 100k UGX");
-        document.getElementById('cert-name').innerText = name.toUpperCase();
-        document.getElementById('cert-id').innerText = Math.floor(Math.random()*9999);
-        document.getElementById('cert-preview').style.display='block';
-    }
-    function buyVIP() { if(balance>=5000){balance-=5000; revenue+=5000; isVIP=true; document.getElementById('vip-status').style.display='block'; update();} }
-    let clicks = 0; function adminClick() { clicks++; if(clicks>=5) toggleAdmin(); }
-    function toggleAdmin() { let a = document.getElementById('admin-panel'); a.style.display = a.style.display==='flex'?'none':'flex'; clicks=0;}
-</script>
-</body>
-</html>
+        const i = document.getElementById('chat-in'); 
+        const m = i.value.trim().toLowerCase(); 
+        if(!m) return;
+        
+        appendMsg('user', i.value); 
+        i.value = '';
+
+        setTimeout(() => {
+            let r = "I'm your Game Changer AI. Ask about 'Fees', 'VIP', 'Withdrawal time', or 'Safety'.";
+            if(m.includes('fee') || m.includes('cost')) r = "We charge a 5% deposit fee. VIP members pay 0% on withdrawals!";
+            else if(m.includes('withdraw')) r = "Withdrawals go to your mobile wallet. Ensure you scan your ID in 'Safety' if withdrawing over 5,000 UGX.";
+            else if(m.includes('vip')) r = "VIP status costs 5,000 UGX. It removes fees and enables instant withdrawals.";
+            else if(m.includes('time') || m.includes('long')) r = "VIP is instant. Standard withdrawals take 12-24 hours for network clearance.";
+            else if(m.includes('safe') || m.includes('real')) r = "Our platform uses National ID verification and encrypted handshakes to protect your UGX.";
+            else if(m.includes('gift') || m.includes('bonus')) r = "The Daily G                                
